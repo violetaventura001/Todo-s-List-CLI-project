@@ -1,21 +1,25 @@
 todos = []
-stop = False
+stop = False  
 
 def get_todos():
     global todos
     return todos
 
 def add_one_task(title):
-    # your code here
+    todos.append(title)
     pass
 
 def print_list():
     global todos
+    print("These are your to-do task: \n "+str(todos))
     pass
 
 def delete_task(number_to_delete):
-    # your code here
-    pass
+    if number_to_delete in todos:
+        todos.remove(number_to_delete)
+    else:
+        print(number_to_delete + "does not exsist in this list.")
+    return todos        
 
 def save_todos():
     # your code here
@@ -44,7 +48,7 @@ if __name__ == '__main__':
         elif response == "3":
             print_list()
         elif response == "2":
-            print("What task number you want to delete?")
+            print("What task would you want to delete?")
             number_to_delete = input()
             delete_task(number_to_delete)
         elif response == "1":
