@@ -8,32 +8,29 @@ def get_todos():
 
 def add_one_task(title):
     todos.append(title)
-    pass
 
 def print_list():
     global todos
     print("These are your to-do task: \n "+str(todos))
-    pass
 
 def delete_task(number_to_delete):
     if number_to_delete in todos:
         todos.remove(number_to_delete)
     else:
-        print(number_to_delete + "does not exsist in this list.")
+        print(number_to_delete +" "+ "does not exsist in this list.")
     return todos        
 
 def save_todos(listToUpdate):
     with open("todos.csv","w") as csvfile:
-        csvwriter = csvwriter(csvfile, delimiter=',')
+        csvwriter = csv.writer(csvfile, delimiter=',')
         csvwriter.writerow(listToUpdate)
     
 def load_todos():
-    # your code here
     pass
 
 # Below this code will only run if the entry file running was app.py
-
-    stop = False  
+stop = False  
+if __name__ == '__main__':    
     while stop == False:
         print("""
     Choose an option: 
@@ -54,7 +51,7 @@ def load_todos():
             number_to_delete = input()
             delete_task(number_to_delete)
         elif response == "1":
-            print("What is your task title?")
+            print("What task would you like to add?")
             title = input()
             add_one_task(title)
         elif response == "4":
@@ -65,3 +62,4 @@ def load_todos():
             load_todos()
         else:
             print("Invalid response, asking again...")
+           
