@@ -1,5 +1,6 @@
+import csv
+
 todos = []
-stop = False  
 
 def get_todos():
     global todos
@@ -21,17 +22,18 @@ def delete_task(number_to_delete):
         print(number_to_delete + "does not exsist in this list.")
     return todos        
 
-def save_todos():
-    # your code here
-    pass
-
+def save_todos(listToUpdate):
+    with open("todos.csv","w") as csvfile:
+        csvwriter = csvwriter(csvfile, delimiter=',')
+        csvwriter.writerow(listToUpdate)
     
 def load_todos():
     # your code here
     pass
 
 # Below this code will only run if the entry file running was app.py
-if __name__ == '__main__':
+
+    stop = False  
     while stop == False:
         print("""
     Choose an option: 
